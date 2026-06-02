@@ -1,0 +1,6 @@
+# Local gitignore for Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.env
