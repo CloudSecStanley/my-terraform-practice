@@ -4,3 +4,9 @@
 *.tfstate.backup
 *.tfvars
 .env
+# Ignore sensitive key files
+*.pem
+*.key
+*.crt
+*.pfx
+*.cer

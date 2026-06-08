@@ -1,0 +1,28 @@
+name: Cloud Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# FIXES CKV2_GHA_1: Explicitly restrict the GITHUB_TOKEN to read-only for repository contents
+permissions:
+  contents: read
+
+jobs:
+  checkov-scan:
+    name: Checkov IaC Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Clone your repository into the runner
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      # Step 2: Run the official Checkov action
+      - name: Run Checkov Scanner
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: terraform
